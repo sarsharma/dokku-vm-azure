@@ -6,3 +6,5 @@ ansible-galaxy install dokku_bot.ansible_dokku
 #ToDo remove hardcoded sleep
 sleep 1m
 ansible-playbook -i azureuser@$(cat ip.txt),  dokku_deploy.yml 
+#add local ssh public key to Dokku as admin
+cat ~/.ssh/id_rsa.pub | ssh azureuser@$(cat ip.txt) sudo dokku ssh-keys:add admin
